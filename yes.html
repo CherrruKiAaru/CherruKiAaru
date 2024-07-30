@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -11,46 +11,81 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: rgb(189, 225, 122);
+            background-color: #f0f8f4;
             margin: 0;
-            font-family: 'Nunito', sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
         }
+
         .container {
             text-align: center;
             width: 100%;
             max-width: 600px;
             padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
+
         .header_text {
-            font-size: 5vw;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: white;
+            color: #ff6f6f;
             margin: 20px 0;
         }
+
         .gif_container {
             margin-bottom: 20px;
         }
+
         .gif_container img {
             max-width: 100%;
             height: auto;
+            border-radius: 10px;
         }
-        @media only screen and (max-width: 600px) {
+
+        .btn-custom {
+            background-color: #ffb6b6;
+            color: #d44f4f;
+            padding: 12px 24px;
+            font-size: 1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff9f9f;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 576px) {
             .header_text {
-                font-size: 6vw;
+                font-size: 1.25rem;
             }
         }
     </style>
     <title>Happy Anniversary!</title>
 </head>
+
 <body>
     <div class="container">
-        <h1 class="header_text">Cherru🐽 loves you more Aloo Bhujiaa🧸! <br> Happy 8 months my bubu!!</h1>
+        <h1 class="header_text">Cherru🐽 loves you more Aloo Bhujiaa🧸! <br> Happy 8 months to us my pretty baby🫂</h1>
         <div class="gif_container">
             <img src="https://media.giphy.com/media/o13XQYsQ8pFAplvaDh/giphy.gif?cid=790b7611ktdpvxtxomdl7dghgiiy7v6x0wdbjamd9ni3io2f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cute animated illustration">
         </div>
+        <button class="btn-custom" onclick="showMessage()">Message from Cherru</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showMessage() {
+            alert("I love you so much Aaru! Thank you for being my everything. Happy 8 months! ❤️🐽");
+        }
+    </script>
 </body>
+
 </html>
