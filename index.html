@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 8 Months to us!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: rgb(224, 248, 180);
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Nunito', sans-serif, 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .header_text {
+            font-size: 2rem; /* Increase font size */
+            font-weight: bold;
+            color: rgb(255, 108, 130); /* Light pink color */
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
+        }
+        .gif_container {
+            margin-bottom: 20px;
+        }
+        .gif_container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .btn-custom {
+            background-color: #f9c5c5;
+            color: rgb(233, 48, 48);
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 1rem;
+            margin: 4px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #f7a6a6;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .btn-container button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Happy 8 months Aaru Baby😘❤️<br>Do you love Cherru🐽?</h1>
+        <div class="gif_container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm9vMmJ3aHNmeHllODkxdHdiZmZmaXJrYnY3ZWk5dHhpNmZpeDNtZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jpqwTJ25fA9HzdeS8Z/giphy.gif" alt="Animated GIF">
+        </div>
+        <div class="btn-container">
+            <button class="btn btn-custom" id="yesButton" onclick="nextPage()">Yes❤️</button>
+            <button class="btn btn-custom" id="noButton" onclick="moveButton()" onmouseover="moveButton()">No 😏</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function moveButton() {
+            var noButton = document.getElementById('noButton');
+            var container = document.querySelector('.btn-container');
+            var containerRect = container.getBoundingClientRect();
+            var buttonRect = noButton.getBoundingClientRect();
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+            
+            // Calculate maximum x and y positions to keep the button inside the viewport
+            var maxX = Math.min(viewportWidth - buttonRect.width, containerRect.width - buttonRect.width);
+            var maxY = Math.min(viewportHeight - buttonRect.height, containerRect.height - buttonRect.height);
+            
+            var x = Math.random() * maxX;
+            var y = Math.random() * maxY;
+            
+            // Ensure the button remains inside the container and viewport
+            noButton.style.transform = `translate(${Math.min(x, maxX)}px, ${Math.min(y, maxY)}px)`;
+        }
+    </script>
+</body>
+</html>
