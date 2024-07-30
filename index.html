@@ -24,6 +24,7 @@
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            position: relative; /* Allow positioning of buttons */
         }
 
         .header_text {
@@ -64,10 +65,31 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative; /* Position buttons relative to this container */
         }
 
         .btn-container button {
             margin: 5px;
+        }
+
+        @media (max-width: 576px) {
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+
+        .message {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            font-size: 1.25rem;
+            color: #ff6f6f; /* Soft pink color */
+            font-weight: bold;
+        }
+
+        .message img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -80,7 +102,11 @@
         </div>
         <div class="btn-container">
             <button class="btn btn-custom" id="yesButton" onclick="nextPage()">Yes❤️</button>
-            <button class="btn btn-custom" id="noButton" onclick="moveButton()" onmouseover="moveButton()">No 😏</button>
+            <button class="btn btn-custom" id="noButton" onclick="moveButton()">No😏</button>
+        </div>
+        <div id="message" class="message">
+            Baday Btmeez ho gaye ho🥲
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2xiZ2Vjd25lNDNvdHBrZDQ0Nzh4ZDdlNXNqdTNsM3Zvb2xudHA5dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LqSIcVvEolPo5wYnOZ/giphy.gif" alt="Sad GIF">
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -93,21 +119,31 @@
 
         function moveButton() {
             var noButton = document.getElementById('noButton');
+            var yesButton = document.getElementById('yesButton');
             var container = document.querySelector('.btn-container');
+            var message = document.getElementById('message');
+
+            // Display the message
+            message.style.display = 'block';
+
+            // Calculate the position of the "Yes" button
+            var yesButtonRect = yesButton.getBoundingClientRect();
             var containerRect = container.getBoundingClientRect();
-            var buttonRect = noButton.getBoundingClientRect();
-            var viewportWidth = window.innerWidth;
-            var viewportHeight = window.innerHeight;
-            
-            // Calculate maximum x and y positions to keep the button inside the viewport
-            var maxX = Math.min(viewportWidth - buttonRect.width, containerRect.width - buttonRect.width);
-            var maxY = Math.min(viewportHeight - buttonRect.height, containerRect.height - buttonRect.height);
-            
-            var x = Math.random() * maxX;
-            var y = Math.random() * maxY;
-            
-            // Ensure the button remains inside the container and viewport
-            noButton.style.transform = `translate(${Math.min(x, maxX)}px, ${Math.min(y, maxY)}px)`;
+
+            var maxX = containerRect.width - noButton.offsetWidth;
+            var maxY = containerRect.height - noButton.offsetHeight;
+
+            var offsetX = Math.random() * (maxX - 50) + 25; // Stay close to "Yes" button
+            var offsetY = Math.random() * (maxY - 50) + 25;
+
+            // Calculate new position to keep the button within the container and close to the "Yes" button
+            var newX = yesButtonRect.left - containerRect.left + offsetX;
+            var newY = yesButtonRect.top - containerRect.top + offsetY;
+
+            // Ensure the button remains inside the container
+            noButton.style.position = 'absolute'; // Ensure absolute positioning
+            noButton.style.left = `${Math.min(Math.max(newX, 0), maxX)}px`;
+            noButton.style.top = `${Math.min(Math.max(newY, 0), maxY)}px`;
         }
     </script>
 </body>
