@@ -45,16 +45,17 @@
         }
 
         .btn-custom {
-            background-color: #ffb6b6;
-            color: #d44f4f;
-            padding: 12px 24px;
-            font-size: 1rem;
-            margin: 8px;
-            cursor: pointer;
-            border: none;
-            border-radius: 25px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+    background-color: #ffb6b6;
+    color: #d44f4f;
+    padding: 12px 24px;
+    font-size: 1rem;
+    margin: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s, left 0.5s, top 0.5s; /* Added transition for left and top */
+}
+
 
         .btn-custom:hover {
             background-color: #ff9f9f;
@@ -126,33 +127,38 @@
         }
 
         function moveButton() {
-            var noButton = document.getElementById('noButton');
-            var yesButton = document.getElementById('yesButton');
-            var container = document.querySelector('.btn-container');
-            var message = document.getElementById('message');
+    var noButton = document.getElementById('noButton');
+    var yesButton = document.getElementById('yesButton');
+    var container = document.querySelector('.btn-container');
+    var message = document.getElementById('message');
 
-            // Display the message
-            message.style.display = 'block';
+    // Display the message
+    message.style.display = 'block';
 
-            // Calculate the position of the "Yes" button
-            var yesButtonRect = yesButton.getBoundingClientRect();
-            var containerRect = container.getBoundingClientRect();
+    // Calculate the position of the "Yes" button
+    var yesButtonRect = yesButton.getBoundingClientRect();
+    var containerRect = container.getBoundingClientRect();
 
-            var maxX = containerRect.width - noButton.offsetWidth;
-            var maxY = containerRect.height - noButton.offsetHeight;
+    var maxX = containerRect.width - noButton.offsetWidth;
+    var maxY = containerRect.height - noButton.offsetHeight;
 
-            var offsetX = Math.random() * (maxX - 50) + 25; // Stay close to "Yes" button
-            var offsetY = Math.random() * (maxY - 50) + 25;
+    var offsetX = Math.random() * (maxX - 50) + 25; // Stay close to "Yes" button
+    var offsetY = Math.random() * (maxY - 50) + 25;
 
-            // Calculate new position to keep the button within the container and close to the "Yes" button
-            var newX = yesButtonRect.left - containerRect.left + offsetX;
-            var newY = yesButtonRect.top - containerRect.top + offsetY;
+    // Calculate new position to keep the button within the container and close to the "Yes" button
+    var newX = yesButtonRect.left - containerRect.left + offsetX;
+    var newY = yesButtonRect.top - containerRect.top + offsetY;
 
-            // Ensure the button remains inside the container
-            noButton.style.position = 'absolute'; // Ensure absolute positioning
-            noButton.style.left = `${Math.min(Math.max(newX, 0), maxX)}px`;
-            noButton.style.top = `${Math.min(Math.max(newY, 0), maxY)}px`;
-        }
+    // Ensure the button remains inside the container
+    noButton.style.position = 'absolute'; // Ensure absolute positioning
+
+    // Use requestAnimationFrame for smoother transition
+    function animate() {
+        noButton.style.left = `${Math.min(Math.max(newX, 0), maxX)}px`;
+        noButton.style.top = `${Math.min(Math.max(newY, 0), maxY)}px`;
+    }
+    requestAnimationFrame(animate);
+}
     </script>
 </body>
 

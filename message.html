@@ -91,11 +91,10 @@
         <h1 class="header_text">Happy 7 months to us my baby🫂❤️</h1>
         <p>I feel so lucky to have you, You are my everything 🧿❤️, my cutie baby it has been 7 months but still it feels like ki mai tuhanu kal hi mileya, the more I spend time with you ohna hi mainu ghat lgda, My Aloo bhujiaaa I love you♾️🫂❤️🧿</p>
         <div class="btn-container">
-            <button class="btn btn-primary btn-custom" onclick="showPhoto()">Show Photo</button>
-            <button class="btn btn-secondary btn-custom" onclick="showVideo()">Show Video</button>
+            <button class="btn btn-secondary btn-custom" onclick="toggleVideo()">Show Video</button>
         </div>
         <div class="video-container" id="videoContainer">
-            <iframe src="https://www.youtube.com/embed/2um8Vzx8duk" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/OII68Oxqf4Y" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -103,14 +102,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function showPhoto() {
-            const photoUrl = 'path/to/your/photo.jpg'; // Replace with your actual photo URL
-            window.open(photoUrl, '_blank');
-        }
 
-        function showVideo() {
+        function toggleVideo() {
             const videoContainer = document.getElementById('videoContainer');
-            videoContainer.style.display = 'block';
+            if (videoContainer.style.display === 'none' || videoContainer.style.display === '') {
+                videoContainer.style.display = 'block';
+            } else {
+                videoContainer.style.display = 'none';
+            }
         }
     </script>
 </body>
