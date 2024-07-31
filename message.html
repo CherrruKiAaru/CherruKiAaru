@@ -34,6 +34,49 @@
             margin: 20px 0;
         }
 
+        .gif_container {
+            margin-bottom: 20px;
+        }
+
+        .gif_container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .btn-custom {
+            background-color: #ffb6b6;
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 1rem;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff9f9f;
+            transform: scale(1.05);
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: 10px;
+        }
+
         @media (max-width: 576px) {
             .header_text {
                 font-size: 1.25rem;
@@ -45,12 +88,31 @@
 
 <body>
     <div class="container">
-        <h1 class="header_text">Happy 8 months to us my baby🫂❤️</h1>
-        <p> I feel so lucky to have you, You are my everything 🧿❤️, my cutie baby it has been 8 months but still it feels like ki mai tuhanu kal hi mileya, the more I spend time with you ohna hi mainu ghat lgda, My Aloo bhujiaaa I love you♾️🫂❤️🧿</p>
+        <h1 class="header_text">Happy 7 months to us my baby🫂❤️</h1>
+        <p>I feel so lucky to have you, You are my everything 🧿❤️, my cutie baby it has been 7 months but still it feels like ki mai tuhanu kal hi mileya, the more I spend time with you ohna hi mainu ghat lgda, My Aloo bhujiaaa I love you♾️🫂❤️🧿</p>
+        <div class="btn-container">
+            <button class="btn btn-primary btn-custom" onclick="showPhoto()">Show Photo</button>
+            <button class="btn btn-secondary btn-custom" onclick="showVideo()">Show Video</button>
+        </div>
+        <div class="video-container" id="videoContainer">
+            <iframe src="https://www.youtube.com/embed/2um8Vzx8duk" allowfullscreen></iframe>
+        </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showPhoto() {
+            const photoUrl = 'path/to/your/photo.jpg'; // Replace with your actual photo URL
+            window.open(photoUrl, '_blank');
+        }
+
+        function showVideo() {
+            const videoContainer = document.getElementById('videoContainer');
+            videoContainer.style.display = 'block';
+        }
+    </script>
 </body>
 
 </html>
